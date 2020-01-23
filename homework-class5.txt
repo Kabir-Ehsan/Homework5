@@ -1,0 +1,60 @@
+
+Please apply the following validations on fields:
+
+
+User
+-id
+-name (Not blank)
+-email (Email address already exists)*
+-profilePhotoUrl
+
+Album
+-id
+-name (Minimum length of 4 character)(Maximum 10 characters)
+-coverPhotoUrl (Cover photo already exists)*
+-createdBy 
+-dateCreated
+
+Photo
+-id
+-albumId (Throw Custom InvalidAlbumIdException)
+-photoUrl
+-createdBy 
+-dateCreated
+
+Comment
+-id
+-photoId (Throw Custom InvalidPhotoIdException)
+-message (Minimum length 1) (Maximum length 20 characters)
+-createdBy 
+-dateCreated
+
+* - Custom Validation
+
+Level 1: Apply javax (not custom) validations + Throw & Catch InvalidPhotoIdException   
+Level 2: Create custom validations for: a. email exists, b. album cover photo url exists
+	 While saving photo check whether the albumId is valid (check in database whether an album with the albumId exists), if not throw InvalidAlbumIdException
+Level 3: Similar to saving photo, while saving comment check whether the photoId is valid, if not throw InvalidPhotoIdException
+	 
+
+Notes:
+
+For swagger:
+dependencies:
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
+annotation: @EnableSwagger2
+
+Please share your aws swagger link for home work + api's to test
+
+
